@@ -1,0 +1,174 @@
+using System.Collections.Generic;
+using System.Reflection;
+using System.ArrayExtensions;
+using System.Linq;
+using System.Diagnostics;
+using UnityEngine;
+
+//see https://stackoverflow.com/a/11308879/11986067
+namespace System
+{
+    public static class ObjectExtensions
+    {
+        private static readonly MethodInfo s_cloneMethod = typeof(Object).GetMethod("MemberwiseClone", BindingFlags.NonPublic | BindingFlags.Instance);
+
+        public static Object Copy(this Object originalObject)
+        {
+            return InternalCopy(originalObject, new Dictionary<Object, Object>(new ReferenceEqualityComparer()));
+        }
+
+        public static T Copy<T>(this T original)
+        {
+            return (T)Copy((Object)original);
+        }
+
+        public static T ShallowCopy<T>(this T original)
+        {
+            return (T)ShallowCopy((Object)original);
+        }
+
+        public static object ShallowCopy(this object source)
+        {
+            if (source == null) return null;
+
+            Type type = source.GetType();
+            object copy = Activator.CreateInstance(type);
+
+            // Copy public instance fields
+            foreach (var field in type.GetFields(BindingFlags.Public | BindingFlags.Instance))
+            {
+                if (IsShallowCopyable(field.FieldType))
+                {
+                    var value = field.GetValue(source);
+                    field.SetValue(copy, value);
+                }
+            }
+
+            // Copy public properties with both getter and setter
+            foreach (var prop in type.GetProperties(BindingFlags.Public | BindingFlags.Instance))
+            {
+                if (!prop.CanRead || !prop.CanWrite) continue;
+                if (IsShallowCopyable(prop.PropertyType))
+                {
+                    var value = prop.GetValue(source, null);
+                    prop.SetValue(copy, value, null);
+                }
+            }
+
+            return copy;
+        }
+
+
+        private static Object InternalCopy(Object originalObject, IDictionary<Object, Object> visited)
+        {
+            if (originalObject == null) return null;
+            var typeToReflect = originalObject.GetType();
+            if (typeToReflect.IsPrimitive()) return originalObject;
+            if (visited.ContainsKey(originalObject)) return visited[originalObject];
+            if (typeof(Delegate).IsAssignableFrom(typeToReflect)) return null;
+            var cloneObject = s_cloneMethod.Invoke(originalObject, null);
+            if (typeToReflect.IsArray)
+            {
+                var arrayType = typeToReflect.GetElementType();
+                if (arrayType.IsPrimitive() == false)
+                {
+                    Array clonedArray = (Array)cloneObject;
+                    clonedArray.ForEach((array, indices) => array.SetValue(InternalCopy(clonedArray.GetValue(indices), visited), indices));
+                }
+
+            }
+            visited.Add(originalObject, cloneObject);
+            CopyFields(originalObject, visited, cloneObject, typeToReflect);
+            RecursiveCopyBaseTypePrivateFields(originalObject, visited, cloneObject, typeToReflect);
+            return cloneObject;
+        }
+
+        private static bool IsShallowCopyable(Type type)
+        {
+            return type.IsPrimitive || type.IsEnum || type == typeof(string) || type.IsValueType;
+        }
+
+        private static void RecursiveCopyBaseTypePrivateFields(object originalObject, IDictionary<object, object> visited, object cloneObject, Type typeToReflect)
+        {
+            if (typeToReflect.BaseType != null)
+            {
+                RecursiveCopyBaseTypePrivateFields(originalObject, visited, cloneObject, typeToReflect.BaseType);
+                CopyFields(originalObject, visited, cloneObject, typeToReflect.BaseType, BindingFlags.Instance | BindingFlags.NonPublic, info => info.IsPrivate);
+            }
+        }
+
+        private static void CopyFields(object originalObject, IDictionary<object, object> visited, object cloneObject, Type typeToReflect, BindingFlags bindingFlags = BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.FlattenHierarchy, Func<FieldInfo, bool> filter = null)
+        {
+            foreach (FieldInfo fieldInfo in typeToReflect.GetFields(bindingFlags))
+            {
+                if (filter != null && filter(fieldInfo) == false) continue;
+                if (fieldInfo.FieldType.IsPrimitive()) continue;
+                var originalFieldValue = fieldInfo.GetValue(originalObject);
+                var clonedFieldValue = InternalCopy(originalFieldValue, visited);
+                fieldInfo.SetValue(cloneObject, clonedFieldValue);
+            }
+        }
+    }
+
+    public class ReferenceEqualityComparer : EqualityComparer<Object>
+    {
+        public override bool Equals(object x, object y)
+        {
+            return ReferenceEquals(x, y);
+        }
+
+        public override int GetHashCode(object obj)
+        {
+            if (obj == null) return 0;
+            return obj.GetHashCode();
+        }
+    }
+
+    namespace ArrayExtensions
+    {
+        public static class ArrayExtensions
+        {
+            public static void ForEach(this Array array, Action<Array, int[]> action)
+            {
+                if (array.LongLength == 0) return;
+                ArrayTraverse walker = new ArrayTraverse(array);
+                do action(array, walker.Position);
+                while (walker.Step());
+            }
+        }
+
+        internal class ArrayTraverse
+        {
+            public int[] Position;
+            private int[] maxLengths;
+
+            public ArrayTraverse(Array array)
+            {
+                maxLengths = new int[array.Rank];
+                for (int i = 0; i < array.Rank; ++i)
+                {
+                    maxLengths[i] = array.GetLength(i) - 1;
+                }
+                Position = new int[array.Rank];
+            }
+
+            public bool Step()
+            {
+                for (int i = 0; i < Position.Length; ++i)
+                {
+                    if (Position[i] < maxLengths[i])
+                    {
+                        Position[i]++;
+                        for (int j = 0; j < i; j++)
+                        {
+                            Position[j] = 0;
+                        }
+                        return true;
+                    }
+                }
+                return false;
+            }
+        }
+    }
+
+}

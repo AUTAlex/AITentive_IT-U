@@ -1,0 +1,4 @@
+DateTime,PlayerName,EpisodeId,Duration,Drag,AverageDistanceToCenter,Supervisor,ModelName,ResetPlatformToIdentity,FocusActivePlatform,Autonomous,AgentChoice,Aborted
+27.10.2022 00:08:47,Alexander Lingler,1,29.4204826,0.2,59.86401,True,EvalAUI,True,False,False,Ball3DAgentOptimal,True
+27.10.2022 00:10:57,Alexander Lingler,1,33.28057,0.1,128.103409,True,EvalAUI,True,False,False,Ball3DAgentOptimal,True
+27.10.2022 00:12:31,Alexander Lingler,1,60.8612022,0.0333333351,1132.45251,True,AUI1sessionOptAUI,True,False,False,Ball3DAgentOptimal,True

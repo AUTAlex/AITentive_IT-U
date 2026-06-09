@@ -1,0 +1,74 @@
+{
+	"hyperparameters": {
+		"version": 2,
+		"autonomous": false,
+		"supervisorModelName": "",
+		"focusAgentModelName": "",
+		"abcSimulation": false,
+		"saveBehavioralData": false,
+		"focusActiveTask": false,
+		"hideInactiveTasks": false,
+		"useFocusAgent": true,
+		"visualTaskQueueChoice": "None",
+		"tasks": [
+			"TypingAgentHumanCognitionSimple",
+			"DrivingAgentHumanCognition"
+		],
+		"taskModels": {}
+	},
+	"supervisorSettings": {
+		"version": 2,
+		"mode": "Force",
+		"randomSupervisor": false,
+		"vectorObservationSize": 149,
+		"setConstantDecisionRequestInterval": true,
+		"decisionRequestIntervalInSeconds": 0.8,
+		"difficultyIncrementInterval": 100,
+		"decisionPeriod": 1,
+		"advanceNoticeInSeconds": 0.3
+	},
+	"TypingAgentHumanCognitionSimple": {
+		"isAutonomous": false,
+		"quizName": "quiz1.csv",
+		"screenWidthPixel": 1920,
+		"screenHightPixel": 1080,
+		"screenDiagonalInch": 27,
+		"numberOfSamples": 300,
+		"numberOfBins": 3000,
+		"observationProbability": 0.03,
+		"showBeliefState": false,
+		"fullVision": false,
+		"useFocusAgent": true,
+		"isTerminatingTask": false,
+		"showFingerPosition": true,
+		"supervisorRewardType": "TypingWhileDriving"
+	},
+	"drivingAgentHumanCognition": {
+		"isAutonomous": true,
+		"maxCarSpeed": 150,
+		"decisionPeriod": 4,
+		"updatePeriod": 0.1,
+		"numberOfSamples": 100,
+		"sigma": 0.2,
+		"sigmaMean": 0.1,
+		"observationProbability": 0.005,
+		"numberOfBins": 1000,
+		"useFocusAgent": true,
+		"fullVision": false,
+		"showBeliefState": false,
+		"isTerminatingTask": true
+	},
+	"supervisorAgent": {
+		"rewardFunction": "r_0*r_s1/r_n1+r_1*2"
+	},
+	"focusAgent": {
+		"vectorObservationSize": 137,
+		"screenWidthPixel": 1920,
+		"screenHightPixel": 1080,
+		"screenDiagonalInch": 27,
+		"distanceBetweenTasksDisplays": 40,
+		"rewardFunction": "r_0",
+		"showFocusedObject": true,
+		"isSupervisorGuided": true
+	}
+}

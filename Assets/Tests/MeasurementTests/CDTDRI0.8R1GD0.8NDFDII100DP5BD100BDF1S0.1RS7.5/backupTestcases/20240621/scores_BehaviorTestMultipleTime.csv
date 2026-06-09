@@ -1,0 +1,5 @@
+DateTime,PlayerName,EpisodeId,Duration,Drag,AverageDistanceToCenter,Supervisor,ModelName,ResetPlatformToIdentity,FocusActivePlatform,Autonomous,AgentChoice,Aborted
+02.08.2023 13:37:15,player1,1,7.59999371,0.8,2.165353,True,RandomSupervisor,True,False,False,Ball3DAgentOptimal,False
+02.08.2023 13:37:15,player1,2,22.74033,0.4,2.58166361,True,RandomSupervisor,True,False,False,Ball3DAgentOptimal,False
+02.08.2023 13:37:15,player1,3,5.83999538,0.266666681,3.38006616,True,RandomSupervisor,True,False,False,Ball3DAgentOptimal,False
+02.08.2023 13:37:15,player1,4,9.000016,0.2,2.49107456,True,RandomSupervisor,True,False,False,Ball3DAgentOptimal,False

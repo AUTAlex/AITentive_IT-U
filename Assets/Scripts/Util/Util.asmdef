@@ -1,0 +1,24 @@
+{
+    "name": "Util",
+    "rootNamespace": "",
+    "references": [
+        "GUID:e0cd26848372d4e5c891c569017e11f1",
+        "GUID:2665a8d13d1b3f18800f46e256720795",
+        "GUID:50b9df6e86a0242419cd3a65491adaa6",
+        "GUID:85e0054f8e64b47309646d35f8851f81"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": true,
+    "overrideReferences": true,
+    "precompiledReferences": [
+        "NCalc.Sync.dll",
+        "NCalc.Core.dll",
+        "CsvHelper.dll",
+        "Newtonsoft.Json.dll"
+    ],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

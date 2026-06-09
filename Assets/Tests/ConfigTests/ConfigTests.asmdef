@@ -1,0 +1,34 @@
+{
+    "name": "ConfigTests",
+    "rootNamespace": "",
+    "references": [
+        "UnityEngine.TestRunner",
+        "UnityEditor.TestRunner",
+        "Util",
+        "Unity.Collections",
+        "Editor",
+        "ProjectSettings",
+        "Measurement",
+        "Unity.Barracuda",
+        "Config",
+        "Environment",
+        "Unity.ML-Agents",
+        "Validator"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": true,
+    "precompiledReferences": [
+        "nunit.framework.dll",
+        "NSubstitute.dll"
+    ],
+    "autoReferenced": false,
+    "defineConstraints": [
+        "UNITY_INCLUDE_TESTS"
+    ],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

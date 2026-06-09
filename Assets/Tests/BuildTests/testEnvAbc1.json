@@ -1,0 +1,69 @@
+{
+	"hyperparameters": {
+		"autonomous": false,
+		"focusActivePlatform": false,
+		"resetPlatformToIdentity": true,
+		"agentChoice": "Ball3DAgentHumanCognition",
+		"supervisorModelName": "BuildTest\\AUI1.asset",
+		"ballAgentModelName": "BuildTest\\3DBall1.asset",
+		"focusAgentModelName": "BuildTest\\Focus1.asset",
+		"measurePerformance": false,
+		"numberOfPlatforms": 2,
+		"visualTaskQueueChoice": "None",
+		"visionAgentChoice": "FocusAgent"
+	},
+	"supervisorAgent": {
+		"rewardFunction": "r_0+r_1"
+	},
+	"supervisorSettings": {
+		"mode": "Force",
+		"randomSupervisor": true,
+		"vectorObservationSize": 16,
+		"setConstantDecisionRequestInterval": true,
+		"decisionRequestIntervalInSeconds": 0.8,
+		"decisionRequestIntervalRangeInSeconds": 1,
+		"globalDrag": 0.8,
+		"useNegativeDragDifficulty": false,
+		"difficultyIncrementInterval": 100,
+		"decisionPeriod": 5,
+		"advanceNoticeInSeconds": 0,
+		"ballAgentDifficulty": 100,
+		"ballAgentDifficultyDivisionFactor": 1,
+		"ballStartingRadius": 0.1,
+		"resetSpeed": 7.5
+	},
+	"behavioralDataCollectionSettings": {
+		"measurePerformance": false,
+		"collectDataForComparison": false,
+		"numberOfAreaBins_BehavioralData": 196,
+		"numberOfBallVelocityBinsPerAxis_BehavioralData": 5,
+		"numberOfAngleBinsPerAxis": 4,
+		"numberOfDistanceBins": 12,
+		"numberOfDistanceBins_angle": 12,
+		"numberOfDistanceBins_velocity": 12,
+		"numberOfActionBinsPerAxis": 5,
+		"numberOfTimeBins": 1
+	},
+	"balancingTaskSettings" : {
+		"isTerminatingTask": true
+	},
+	"ball3DAgentHumanCognitionSettings": {
+		"useFocusAgent": true,
+		"numberOfBins": 200,
+		"showBeliefState": false,
+		"numberOfSamples": 300
+	},
+	"focusAgent": {
+		"vectorObservationSize": 132,
+		"displayConfigurations": [
+			{
+				"widthPixel": 3840,
+				"heightPixel": 1080,
+				"diagonalInch": 48.9,
+				"distanceToUserMeter": 0.3
+			}
+		],
+		"distanceBetweenTasksDisplays": 40,
+		"rewardFunction": "r_0+r_1"
+	}
+}

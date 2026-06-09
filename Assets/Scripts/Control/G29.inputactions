@@ -1,0 +1,76 @@
+{
+    "name": "G29",
+    "maps": [
+        {
+            "name": "Heuristic",
+            "id": "01efc34a-6421-46d2-9b92-14987831f28f",
+            "actions": [
+                {
+                    "name": "Move",
+                    "type": "PassThrough",
+                    "id": "c94473cb-7998-48f1-a2b3-a7427ac29de5",
+                    "expectedControlType": "",
+                    "processors": "AxisDeadzone(min=1.401298E-45)",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Accelerate",
+                    "type": "PassThrough",
+                    "id": "9755d752-a632-4de9-9907-1f7adc506cfe",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "03d2abdf-4d70-4a54-947e-f9f0a48fffdb",
+                    "path": "<Logitech G29 Racing Wheel>/stick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "1D Axis",
+                    "id": "b21e4674-a398-4735-8f3b-fece325093cc",
+                    "path": "1DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Accelerate",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "negative",
+                    "id": "ce2179dc-beeb-4533-8d93-6c52d7cf24c9",
+                    "path": "<Logitech G29 Racing Wheel>/brakeAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Accelerate",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "52621634-02cd-442a-8364-a2b296142e63",
+                    "path": "<Logitech G29 Racing Wheel>/throttleAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Accelerate",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}

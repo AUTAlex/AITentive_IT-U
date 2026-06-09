@@ -1,0 +1,81 @@
+{
+	"hyperparameters": {
+		"version": 2,
+		"autonomous": true,
+		"supervisorModelName": "",
+		"focusAgentModelName": "",
+		"abcSimulation": false,
+		"saveBehavioralData": false,
+		"focusActiveTask": false,
+		"hideInactiveTasks": false,
+		"useFocusAgent": false,
+		"useAttentionTimer": false,
+		"visualTaskQueueChoice": "None",
+		"visionAgentChoice": "PixelVisionAgent",
+		"tasks": [
+			"DrivingAgentHumanCognition"
+		],
+		"taskModels": {}
+	},
+	"supervisorSettings": {
+		"version": 2,
+		"mode": "Force",
+		"randomSupervisor": true,
+		"vectorObservationSize": 152,
+		"setConstantDecisionRequestInterval": true,
+		"decisionRequestIntervalInSeconds": 10,
+		"difficultyIncrementInterval": 100,
+		"decisionPeriod": 1,
+		"advanceNoticeInSeconds": 0.5
+	},
+	"attentionTimer": 
+	{
+		"useRandomTimes": true,
+		"pauseOnlyVision": true,
+		"onScreenDurationsMin": 5,
+		"onScreenDurationsMax": 15,
+		"offScreenDurationsMin": 5,
+		"onScreenDurationsMax": 15
+	},
+	"drivingAgentHumanCognition": {
+		"isAutonomous": true,
+		"maxCarSpeed": 150,
+		"decisionPeriod": 4,
+		"updatePeriod": 0.2,
+		"numberOfSamples": 10,
+		"sigma": 0.2,
+		"observationProbability": 0.9,
+		"numberOfBins": 40,
+		"useFocusAgent": true,
+		"fullVision": false,
+		"showBeliefState": false,
+		"isTerminatingTask": true,
+		"useSampleVelocity": false
+	},
+	"supervisorAgent": {
+		"rewardFunction": "r_0"
+	},
+	"GameManager": 
+	{
+		"ActiveScenarioSettings": "Scenario_Training_Static"
+	},
+	"pixelVisionAgent": {
+		"vectorObservationSize": 100,
+		"displayConfigurations": [
+			{
+				"widthPixel": 1920,
+				"heightPixel": 1080,
+				"diagonalInch": 55,
+				"distanceToUserMeter": 2
+			}
+		],
+		"distanceBetweenTasksDisplays": 0,
+		"rewardFunction": "r_0",
+		"showFocusedObject": true,
+		"isSupervisorGuided": true,
+		"displayAlignment": "Horizontal",
+		"useEmbeddings": false,
+		"sampleCount": 32,
+		"showPerceivedObjects": true
+	}
+}

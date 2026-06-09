@@ -1,0 +1,75 @@
+{
+	"hyperparameters": {
+		"version": 2,
+		"autonomous": true,
+		"supervisorModelName": "",
+		"focusAgentModelName": "",
+		"abcSimulation": false,
+		"saveBehavioralData": false,
+		"focusActiveTask": false,
+		"hideInactiveTasks": false,
+		"useFocusAgent": true,
+		"useAttentionTimer": false,
+		"visualTaskQueueChoice": "None",
+		"visionAgentChoice": "PixelVisionAgent",
+		"tasks": [
+			"TypingAgentHumanCognitionSimpleNormalized"
+		],
+		"taskModels": {
+			"VisionAgent": "BuildTest\\PixelVision.asset"
+		}
+	},
+	"supervisorSettings": {
+		"version": 2,
+		"mode": "Force",
+		"randomSupervisor": true,
+		"vectorObservationSize": 152,
+		"setConstantDecisionRequestInterval": true,
+		"decisionRequestIntervalInSeconds": 10,
+		"difficultyIncrementInterval": 100,
+		"decisionPeriod": 1,
+		"advanceNoticeInSeconds": 0.5
+	},
+	"TypingAgentHumanCognitionSimpleNormalized": {
+		"isAutonomous": false,
+		"quizName": "quizXAll.csv",
+		"DisplayConfiguration": {
+			"widthPixel": 1920,
+			"heightPixel": 1080,
+			"diagonalInch": 16.1,
+			"distanceToUserMeter": 0.6
+		},
+		"numberOfSamples": 300,
+		"numberOfBins": 3000,
+		"observationProbability": 0.03,
+		"constantReactionTime": 1,
+		"showBeliefState": false,
+		"fullVision": false,
+		"useFocusAgent": true,
+		"isTerminatingTask": true,
+		"showFingerPosition": true,
+		"supervisorRewardType": "TypingWhileDriving",
+		"useViewportSpace": true
+	},
+	"supervisorAgent": {
+		"rewardFunction": "r_0"
+	},
+	"pixelVisionAgent": {
+		"vectorObservationSize": 100,
+		"displayConfigurations": [
+			{
+				"widthPixel": 1920,
+				"heightPixel": 1080,
+				"diagonalInch": 16.1,
+				"distanceToUserMeter": 0.6
+			}
+		],
+		"distanceBetweenTasksDisplays": 0,
+		"rewardFunction": "r_0*10",
+		"showPerceivedObjects": false,
+		"isSupervisorGuided": false,
+		"displayAlignment": "Horizontal",
+		"useEmbeddings": false,
+		"pixelOnlyMode": false
+	}
+}

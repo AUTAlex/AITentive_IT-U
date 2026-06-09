@@ -1,0 +1,46 @@
+{
+	"supervisorSettings": {
+		"randomSupervisor": false,
+		"vectorObservationSize": 16,
+		"setConstantDecisionRequestInterval": true,
+		"decisionRequestIntervalInSeconds": 99,
+		"decisionRequestIntervalRangeInSeconds": 99,
+		"globalDrag": 99,
+		"useNegativeDragDifficulty": true,
+		"difficultyIncrementInterval": 99,
+		"decisionPeriod": 99,
+		"advanceNoticeInSeconds": 0,
+		"ballAgentDifficulty": 99,
+		"ballAgentDifficultyDivisionFactor": 99,
+		"ballStartingRadius": 1,
+		"resetSpeed": 99
+	},
+	"behavioralDataCollectionSettings": {
+		"comparisonTimeLimit": 0,
+		"maxNumberOfActions": 150000,
+		"numberOfAreaBins_BehavioralData": 225,
+		"numberOfBallVelocityBinsPerAxis_BehavioralData": 6,
+		"numberOfAngleBinsPerAxis": 5,
+		"numberOfDistanceBins": 12,
+		"numberOfDistanceBins_angle": 12,
+		"numberOfDistanceBins_velocity": 12,
+		"numberOfActionBinsPerAxis": 5,
+		"numberOfTimeBins": 1
+	},
+	"supervisorAgent": {
+		"rewardFunction": "r_0"
+	},
+	"focusAgent": {
+		"vectorObservationSize": 132,
+		"displayConfigurations": [
+			{
+				"widthPixel": 3840,
+				"heightPixel": 1080,
+				"diagonalInch": 48.9,
+				"distanceToUserMeter": 0.3
+			}
+		],
+		"distanceBetweenTasksDisplays": 40,
+		"rewardFunction": "r_0+r_1"
+	}
+}

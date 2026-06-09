@@ -1,0 +1,264 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2535513409964313978
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7072828743764006650}
+  - component: {fileID: 138114822173139368}
+  - component: {fileID: 3369508682053151599}
+  - component: {fileID: 7571902586361865251}
+  - component: {fileID: 7222842963217267347}
+  - component: {fileID: 7912627771890296943}
+  - component: {fileID: 3471602458781373709}
+  - component: {fileID: 5897550481864968935}
+  m_Layer: 0
+  m_Name: VisionAgent
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7072828743764006650
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2535513409964313978}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &138114822173139368
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2535513409964313978}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e77eddef2f23d9f45a8767902ad8c7be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  agentParameters:
+    maxStep: 0
+  hasUpgradedFromAgentParameters: 1
+  MaxStep: 0
+  <RewardFunction>k__BackingField: r_0+r_1
+  <ShowFocusedObject>k__BackingField: 0
+  <DistanceBetweenTasksDisplays>k__BackingField: 40
+  <VectorObservationSize>k__BackingField: 132
+  <TaskGameObjects>k__BackingField:
+  - {fileID: 0}
+  - {fileID: 0}
+  <TaskGameObjectsProjectSettingsOrdering>k__BackingField:
+  - {fileID: 0}
+  - {fileID: 0}
+  <DisplayConfigurations>k__BackingField:
+  - WidthPixel: 3840
+    HeightPixel: 1080
+    DiagonalInch: 48.9
+    DistanceToUserMeter: 0.3
+    _aspectWidth: 0
+    _aspectHeight: 0
+  <DisplayAlignment>k__BackingField: 0
+  <IsSupervisorGuided>k__BackingField: 1
+  <MultiScreen>k__BackingField: 0
+  <UseVisionAgentPerTask>k__BackingField: 0
+--- !u!114 &3369508682053151599
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2535513409964313978}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f516e869d8c01d479aab4bd703bb1e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  agentParameters:
+    maxStep: 0
+  hasUpgradedFromAgentParameters: 1
+  MaxStep: 0
+  <RewardFunction>k__BackingField: r_0
+  <ShowFocusedObject>k__BackingField: 1
+  <DistanceBetweenTasksDisplays>k__BackingField: 0
+  <VectorObservationSize>k__BackingField: 100
+  <TaskGameObjects>k__BackingField:
+  - {fileID: 0}
+  - {fileID: 0}
+  <TaskGameObjectsProjectSettingsOrdering>k__BackingField:
+  - {fileID: 0}
+  - {fileID: 0}
+  <DisplayConfigurations>k__BackingField:
+  - WidthPixel: 1920
+    HeightPixel: 1080
+    DiagonalInch: 16.1
+    DistanceToUserMeter: 0.6
+    _aspectWidth: 0
+    _aspectHeight: 0
+  <DisplayAlignment>k__BackingField: 1
+  <IsSupervisorGuided>k__BackingField: 1
+  <MultiScreen>k__BackingField: 0
+  <UseVisionAgentPerTask>k__BackingField: 0
+  <GazeRecorder>k__BackingField: {fileID: 3471602458781373709}
+  <SampleCount>k__BackingField: 32
+  <UseEmbeddings>k__BackingField: 0
+  <PixelOnlyMode>k__BackingField: 0
+  <ShowPerceivedObjects>k__BackingField: 1
+  <RecordGaze>k__BackingField: 0
+  <VisionColliderRefreshInterval>k__BackingField: 1
+  _renderTextureSensors: []
+  _foveatedShader: {fileID: 4800000, guid: c4217cbf88596324da050df7d7186651, type: 3}
+  _cameraInfos: []
+  _foveatedRT:
+  - {fileID: 8400000, guid: 57e707aceea746f47af0b66c5234659b, type: 2}
+  _rawRT:
+  - {fileID: 8400000, guid: 2d0a9c69ac4378e4bbad6ea0b9b038fd, type: 2}
+  MaxPhysicsHitsPerGazeRay: 8
+  MinRaycastsPerJob: 8
+--- !u!114 &7571902586361865251
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2535513409964313978}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d1c4e0b1822b495aa52bc52839ecb30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_BrainParameters:
+    VectorObservationSize: 132
+    NumStackedVectorObservations: 1
+    m_ActionSpec:
+      m_NumContinuousActions: 0
+      BranchSizes: 
+    VectorActionSize: 
+    VectorActionDescriptions: []
+    VectorActionSpaceType: 0
+    hasUpgradedBrainParametersWithActionSpec: 1
+  m_Model: {fileID: 0}
+  m_InferenceDevice: 0
+  m_BehaviorType: 2
+  m_BehaviorName: Focus
+  TeamId: 0
+  m_UseChildSensors: 0
+  m_UseChildActuators: 1
+  m_DeterministicInference: 0
+  m_ObservableAttributeHandling: 0
+--- !u!114 &7222842963217267347
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2535513409964313978}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: 67d6737ac8b3ea542a9c93003d43d799,
+    type: 3}
+  m_NotificationBehavior: 0
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents: []
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: Heuristic
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
+--- !u!114 &7912627771890296943
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2535513409964313978}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c6bcf4412860474682afd4b32fe2a3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &3471602458781373709
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2535513409964313978}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 771c634f4b4856d48a47e385ce4878a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Measurement::GazeRecorder
+  <FileNameForGazeRecords>k__BackingField: gazeRecord.csv
+--- !u!114 &5897550481864968935
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2535513409964313978}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c36302e1c0f6204ab70239ff811c83f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Environment::PixelVisionAgentSequential
+  agentParameters:
+    maxStep: 0
+  hasUpgradedFromAgentParameters: 1
+  MaxStep: 0
+  <RewardFunction>k__BackingField: r_0
+  <ShowFocusedObject>k__BackingField: 0
+  <DistanceBetweenTasksDisplays>k__BackingField: 0
+  <VectorObservationSize>k__BackingField: 0
+  <TaskGameObjects>k__BackingField: []
+  <TaskGameObjectsProjectSettingsOrdering>k__BackingField: []
+  <DisplayConfigurations>k__BackingField:
+  - WidthPixel: 1920
+    HeightPixel: 1080
+    DiagonalInch: 16.1
+    DistanceToUserMeter: 0.6
+    _aspectWidth: 0
+    _aspectHeight: 0
+  <DisplayAlignment>k__BackingField: 0
+  <IsSupervisorGuided>k__BackingField: 0
+  <MultiScreen>k__BackingField: 0
+  <UseVisionAgentPerTask>k__BackingField: 0
+  <GazeRecorder>k__BackingField: {fileID: 3471602458781373709}
+  <SampleCount>k__BackingField: 32
+  <UseEmbeddings>k__BackingField: 0
+  <PixelOnlyMode>k__BackingField: 0
+  <ShowPerceivedObjects>k__BackingField: 0
+  <RecordGaze>k__BackingField: 0
+  <VisionColliderRefreshInterval>k__BackingField: 1
+  _renderTextureSensors: []
+  _foveatedShader: {fileID: 4800000, guid: c4217cbf88596324da050df7d7186651, type: 3}
+  _cameraInfos: []
+  _foveatedRT:
+  - {fileID: 8400000, guid: 57e707aceea746f47af0b66c5234659b, type: 2}
+  _rawRT:
+  - {fileID: 8400000, guid: 2d0a9c69ac4378e4bbad6ea0b9b038fd, type: 2}

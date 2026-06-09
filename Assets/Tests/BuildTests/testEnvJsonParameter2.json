@@ -1,0 +1,82 @@
+{
+	"hyperparameters": {
+		"version": 2,
+		"autonomous": false,
+		"supervisorModelName": "",
+		"focusAgentModelName": "",
+		"timeScale": 1,
+		"abcSimulation": false,
+		"saveBehavioralData": false,
+		"focusActiveTask": false,
+		"hideInactiveTasks": false,
+		"useFocusAgent": true,
+		"tasks": [
+			"DrivingAgentHumanCognition",
+			"TypingAgentHumanCognition"
+		],
+		"taskModels": {},
+		"visualTaskQueueChoice": "None",
+		"visionAgentChoice": "FocusAgent"
+	},
+	"supervisorSettings": {
+		"version": 2,
+		"randomSupervisor": true,
+		"setConstantDecisionRequestInterval": true,
+		"decisionRequestIntervalInSeconds": 33,
+		"decisionRequestIntervalRangeInSeconds": 99,
+		"difficultyIncrementInterval": 99,
+		"decisionPeriod": 99,
+		"advanceNoticeInSeconds": 0
+	},
+	"drivingAgentHumanCognition": {
+		"isAutonomous": false,
+		"maxCarSpeed": 140,
+		"decisionPeriod": 5,
+		"updatePeriod": 0.3,
+		"numberOfSamples": 100,
+		"sigma": 0.111,
+		"sigmaMean": 0.23,
+		"observationProbability": 0.0033,
+		"numberOfBins": 999,
+		"useFocusAgent": true,
+		"fullVision": false,
+		"showBeliefState": true,
+		"isTerminatingTask": false
+	},
+	"typingAgentHumanCognition": {
+		"quizName": "quiztest.csv",
+		"DisplayConfiguration": {
+			"WidthPixel": 1920,
+			"HeightPixel": 1080,
+			"DiagonalInch": 17,
+			"DistanceToUserMeter": 0.60
+		},
+		"showBeliefState": true,
+		"fullVision": true,
+		"numberOfSamples": 33,
+		"observationProbability": 0.22
+	},
+	"supervisorAgent": {
+		"rewardFunction": "r_0",
+		"mode": "Suggestion"
+	},
+	"focusAgent": {
+		"vectorObservationSize": 132,
+		"displayConfigurations": [
+			{
+				"widthPixel": 3840,
+				"heightPixel": 1080,
+				"diagonalInch": 48.9,
+				"distanceToUserMeter": 0.3
+			},
+			{
+				"widthPixel": 1920,
+				"heightPixel": 1080,
+				"diagonalInch": 27,
+				"distanceToUserMeter": 1.3
+			}
+		],
+		"distanceBetweenTasksDisplays": 40,
+		"rewardFunction": "r_0+r_1"
+	}
+}
