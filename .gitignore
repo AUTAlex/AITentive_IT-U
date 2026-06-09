@@ -168,6 +168,16 @@ config/logs/*
 # models trained on another machine
 Assets/Models/*
 
+# Public-release model files
+!Assets/Models/BuildTest/
+!Assets/Models/BuildTest/**
+!Assets/Models/BuildTest.meta
+
+!Assets/Models/AUI.asset
+!Assets/Models/AUI.asset.meta
+!Assets/Models/AUI.onnx
+!Assets/Models/AUI.onnx.meta
+
 # model log files
 run_logs/
 events.out.tfevents.*
@@ -181,3 +191,6 @@ Assets/Ray/*
 
 # Modoium
 Assets/Modoium/*
+
+#Nuget
+Assets/Packages/*
