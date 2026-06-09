@@ -1,0 +1,76 @@
+{
+	"hyperparameters": {
+		"version": 2,
+		"autonomous": true,
+		"supervisorModelName": "",
+		"focusAgentModelName": "",
+		"abcSimulation": false,
+		"saveBehavioralData": false,
+		"focusActiveTask": false,
+		"hideInactiveTasks": false,
+		"useFocusAgent": false,
+		"useAttentionTimer": false,
+		"visualTaskQueueChoice": "None",
+		"visionAgentChoice": "PixelVisionAgent",
+		"useVisionAgentPerTask": true,
+		"useConstantAspectRatio": true,
+		"tasks": [
+			"DrivingAgentHumanCognitionSummerSchool"
+		],
+		"taskModels": {}
+	},
+	"supervisorSettings": {
+		"version": 2,
+		"mode": "Force",
+		"supervisorChoice": "NoSupport"
+	},
+	"drivingAgentHumanCognitionSummerSchool": {
+		"isAutonomous": true,
+		"maxCarSpeed": 150,
+		"useFocusAgent": true,
+		"fullVision": false,
+		"showBeliefState": false,
+		"isTerminatingTask": false,
+		"useSampleVelocity": false,
+		"logRewardDetails": false,
+		"BelievableObjectConfig": {
+			"updatePeriod": 0.2,
+			"numberOfSamples": 10,
+			"sigma": 0.2,
+			"observationProbability": 0.9,
+			"numberOfBins": 40,
+			"rangeMax": 6.5,
+			"rangeMin": -6.5,
+			"UseSampleVelocity": false,
+			"UseEstimatedVelocity": false
+		}
+	},
+	"supervisorAgent": {
+		"rewardFunction": "r_0"
+	},
+	"GameManager": {
+		"ActiveScenarioSettings": "Scenario_CR_Summer_School",
+		"WritePerformanceLog": false,
+		"UseBeliefStateForTraffic": true
+	},
+	"BeliefUpdater": {
+		"BelievableObjectConfig": {
+			"updatePeriod": 0.2,
+			"numberOfSamples": 10,
+			"sigma": 0.2,
+			"sigmaMean": 0.01,
+			"observationProbability": 0.9,
+			"numberOfBins": 40,
+			"rangeMax": 5,
+			"RangeMin": -5,
+			"UseSampleVelocity": true,
+			"UseEstimatedVelocity": true
+		}
+	},
+	"VisibilityMenuButton": {
+		"UseVisibilityButton": true
+	},
+	"BeliefStateVisualizer": {
+		"ShowBeliefState": true
+	}
+}
