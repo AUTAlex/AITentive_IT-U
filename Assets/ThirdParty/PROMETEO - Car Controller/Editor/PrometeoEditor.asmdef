@@ -1,0 +1,18 @@
+{
+    "name": "PrometeoEditor",
+    "rootNamespace": "",
+    "references": [
+        "GUID:d2098005b9debbb40ac9a6314fe6070d"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
