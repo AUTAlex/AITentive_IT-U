@@ -12,7 +12,7 @@ using UnityEngine.Assertions;
 
 public class Ball3DAgentHumanCognition : BallAgent, ICRTask
 {
-    [field: SerializeField, Tooltip("Update period of the location probabilities of the Ball."), ProjectAssign(Header = "Human Cognition Model")]
+    [field: SerializeField, Tooltip("Update period of the location probabilities of the _ball."), ProjectAssign(Header = "Human Cognition Model")]
     public float UpdatePeriod { get; set; } = 0.1f;
 
     [field: SerializeField, Tooltip("Defines how much samples should be taken to calculate the probability distributions."), ProjectAssign]
@@ -39,7 +39,7 @@ public class Ball3DAgentHumanCognition : BallAgent, ICRTask
     [field: SerializeField, Tooltip("Specify the number of bins in which the platform should be divided."), ProjectAssign]
     public int NumberOfBins { get; set; } = 1000;
 
-    [field: SerializeField, Tooltip("Visualizes the current belief position of the Ball (gray Ball), the Ball's average velocity based on the defined normal distribution (black line) and the direction of the bin with the highest probability (red line)."), ProjectAssign]
+    [field: SerializeField, Tooltip("Visualizes the current belief position of the _ball (gray _ball), the _ball's average velocity based on the defined normal distribution (black line) and the direction of the bin with the highest probability (red line)."), ProjectAssign]
     public bool ShowBeliefState { get; set; }
 
 

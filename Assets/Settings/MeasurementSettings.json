@@ -1,5 +1,5 @@
 {
-  "BallStateInformation, Environment, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null": {
+  "Ball3DAgentStateInformation, Environment, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null": {
     "ContinuousActionsX": 0.0,
     "ContinuousActionsY": 0.0,
     "DragValue": 0.0,

@@ -1,0 +1,40 @@
+{
+	"hyperparameters": {
+		"version": 2,
+		"autonomous": true,
+		"supervisorModelName": "",
+		"focusAgentModelName": "",
+		"abcSimulation": false,
+		"saveBehavioralData": false,
+		"focusActiveTask": false,
+		"hideInactiveTasks": false,
+		"useFocusAgent": false,
+		"useAttentionTimer": false,
+		"useVisibilityTimer": false,
+		"visualTaskQueueChoice": "None",
+		"visionAgentChoice": "PixelVisionAgent",
+		"useVisionAgentPerTask": true,
+		"useConstantAspectRatio": true,
+		"tasks": [
+			"BallAgent2DCR"
+		],
+		"taskModels": {
+			"2DBall": "BallAgent2D\\Ball2DAgent.asset"
+		}
+	},
+	"supervisorSettings": {
+		"version": 2,
+		"mode": "Force",
+		"supervisorChoice": "NoSupport"
+	},
+	"ball2DAgent": {
+		"isAutonomous": true,
+		"isTerminatingTask": true
+	},
+	"supervisorAgent": {
+		"rewardFunction": "r_0"
+	},
+	"VisibilityMenuButton": {
+		"UseVisibilityButton": false
+	}
+}

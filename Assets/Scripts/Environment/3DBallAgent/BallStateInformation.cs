@@ -5,7 +5,7 @@ using Unity.MLAgents.Actuators;
 using UnityEngine;
 
 [Serializable]
-public class BallStateInformation : IStateInformation, ISettings
+public class Ball3DAgentStateInformation : IStateInformation, ISettings
 {
     [Measure]
     public float ContinuousActionsX { get; set; }
@@ -85,12 +85,12 @@ public class BallStateInformation : IStateInformation, ISettings
         } 
     }
 
-    public BallStateInformation()
+    public Ball3DAgentStateInformation()
     {
 
     }
 
-    public BallStateInformation(float continuousActionsX, float continuousActionsY, float ballPositionX, float ballPositionY, float ballPositionZ, float ballVelocityX, float ballVelocityY, float ballVelocityZ, float platformAngleX, float platformAngleY, float platformAngleZ)
+    public Ball3DAgentStateInformation(float continuousActionsX, float continuousActionsY, float ballPositionX, float ballPositionY, float ballPositionZ, float ballVelocityX, float ballVelocityY, float ballVelocityZ, float platformAngleX, float platformAngleY, float platformAngleZ)
     {
         ContinuousActionsX = continuousActionsX;
         ContinuousActionsY = continuousActionsY;
@@ -109,7 +109,7 @@ public class BallStateInformation : IStateInformation, ISettings
     {
         return type switch
         {
-            Type t when t == typeof(BallStateInformation) => new int[] { numberOfTimeBins, NumberOfDistanceBins_ballPosition, NumberOfDistanceBins_angle, NumberOfDistanceBins_velocity },
+            Type t when t == typeof(Ball3DAgentStateInformation) => new int[] { numberOfTimeBins, NumberOfDistanceBins_ballPosition, NumberOfDistanceBins_angle, NumberOfDistanceBins_velocity },
             _ => throw new NotImplementedException(),
         };
     }
@@ -118,7 +118,7 @@ public class BallStateInformation : IStateInformation, ISettings
     {
         return sourceTaskState.GetType() switch
         {
-            Type t when t == typeof(BallStateInformation) => GetDiscretizedRelationalStateInformation(sourceTaskState as BallStateInformation, timeBin),
+            Type t when t == typeof(Ball3DAgentStateInformation) => GetDiscretizedRelationalStateInformation(sourceTaskState as Ball3DAgentStateInformation, timeBin),
             _ => throw new NotImplementedException(),
         };
     }
@@ -146,7 +146,7 @@ public class BallStateInformation : IStateInformation, ISettings
 
     public void UpdateStateInformation(IStateInformation stateInformation)
     {
-        BallStateInformation ballStateInformation = stateInformation as BallStateInformation;
+        Ball3DAgentStateInformation ballStateInformation = stateInformation as Ball3DAgentStateInformation;
 
         if (ballStateInformation != null)
         {
@@ -167,7 +167,7 @@ public class BallStateInformation : IStateInformation, ISettings
 
     public void UpdateMeasurementSettings(IStateInformation stateInformation)
     {
-        BallStateInformation ballStateInformation = stateInformation as BallStateInformation;
+        Ball3DAgentStateInformation ballStateInformation = stateInformation as Ball3DAgentStateInformation;
 
         NumberOfDistanceBins_ballPosition = ballStateInformation.NumberOfDistanceBins_ballPosition;
         NumberOfDistanceBins_velocity = ballStateInformation.NumberOfDistanceBins_velocity;
@@ -180,14 +180,14 @@ public class BallStateInformation : IStateInformation, ISettings
 
     public IStateInformation GetCopyOfCurrentState()
     {
-        BallStateInformation copy = new();
+        Ball3DAgentStateInformation copy = new();
         copy.UpdateStateInformation(this);
 
         return copy;
     }
 
 
-    private int[] GetDiscretizedRelationalStateInformation(BallStateInformation sourceTaskState, int timeBin = 0)
+    private int[] GetDiscretizedRelationalStateInformation(Ball3DAgentStateInformation sourceTaskState, int timeBin = 0)
     {
         PlatformAngleX = PlatformAngleX > 300 ? PlatformAngleX - 360 : PlatformAngleX;
         PlatformAngleY = PlatformAngleY > 300 ? PlatformAngleY - 360 : PlatformAngleY;

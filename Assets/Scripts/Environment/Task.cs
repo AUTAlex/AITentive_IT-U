@@ -102,9 +102,9 @@ public abstract class Task : Agent, ITask
 
     public abstract void AddTrueObservationsToSensor(VectorSensor sensor);
 
-    public abstract void OnMove(InputValue value);
-    
-    public abstract void UpdateDifficultyLevel();
+    public virtual void OnMove(InputValue value) { }
+
+    public virtual void UpdateDifficultyLevel() { }
 
     public static event Action<ITask> OnEndEpisode;
 

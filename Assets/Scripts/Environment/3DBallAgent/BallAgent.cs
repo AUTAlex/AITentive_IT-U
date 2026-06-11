@@ -17,27 +17,27 @@ public abstract class BallAgent : Task, IComparable<BallAgent>, IBallAgent
     [field: SerializeField, Tooltip("The speed how fast the platform reset to the horizontal position for the inactive platform."), ProjectAssign]
     public float ResetSpeed { get; set; } = 10;
 
-    [field: SerializeField, Tooltip("ForceDifficulty is represented as the force related to the velocity of the Ball.")]
+    [field: SerializeField, Tooltip("ForceDifficulty is represented as the force related to the velocity of the _ball.")]
     public int ForceDifficulty { get; set; } = 150;
 
-    [field: SerializeField, Tooltip("Radius of the random starting ball position."), ProjectAssign]
+    [field: SerializeField, Tooltip("Radius of the random starting _ball position."), ProjectAssign]
     public float BallStartingRadius { get; set; } = 1f;
 
     [field: SerializeField, Header("Specific to Ball3D")]
     public GameObject Ball { get; set; }
 
-    [field: SerializeField, Tooltip("If true the drag will get negative and therefore the velocity of the Ball is accelerated. Harder _dragDifficulty" +
+    [field: SerializeField, Tooltip("If true the drag will get negative and therefore the velocity of the _ball is accelerated. Harder _dragDifficulty" +
         " compared to only positive drag value."), ProjectAssign]
     public bool UseNegativeDragDifficulty { get; set; }
 
-    [field: SerializeField, Tooltip("Starting value of force added to ball if it fell below a certain threshold."), ProjectAssign]
+    [field: SerializeField, Tooltip("Starting value of force added to _ball if it fell below a certain threshold."), ProjectAssign]
     public int BallAgentDifficulty { get; set; } = 170;
 
     [field: SerializeField, Tooltip("Division factor of force during difficulty update. _dragDifficulty should be divided such that the " +
         "incrementation of the drag is considered."), ProjectAssign]
     public double BallAgentDifficultyDivisionFactor { get; set; } = 1.05;
 
-    [field: SerializeField, Tooltip("Initial drag value of the Ball, a high value means a easy _dragDifficulty. Drag can be used to slow down an " +
+    [field: SerializeField, Tooltip("Initial drag value of the _ball, a high value means a easy _dragDifficulty. Drag can be used to slow down an " +
         "object. The higher the drag the more the object slows down."), ProjectAssign]
     public float GlobalDrag { get; set; }
 
@@ -48,7 +48,7 @@ public abstract class BallAgent : Task, IComparable<BallAgent>, IBallAgent
     public override IStateInformation StateInformation { 
         get 
         {
-            _ballStateInformation ??= new BallStateInformation();
+            _ballStateInformation ??= new Ball3DAgentStateInformation();
 
             _ballStateInformation.ContinuousActionsX = _lastActionPerformed.x;
             _ballStateInformation.ContinuousActionsY = _lastActionPerformed.y;
@@ -68,7 +68,7 @@ public abstract class BallAgent : Task, IComparable<BallAgent>, IBallAgent
         }
         set
         {
-            _ballStateInformation = value as BallStateInformation;
+            _ballStateInformation = value as Ball3DAgentStateInformation;
         }
     }
 
@@ -100,7 +100,7 @@ public abstract class BallAgent : Task, IComparable<BallAgent>, IBallAgent
 
     private (int, float) _countBallCenterDistance;
 
-    private BallStateInformation _ballStateInformation;
+    private Ball3DAgentStateInformation _ballStateInformation;
 
     private Vector2 _currentInput;
 
@@ -126,7 +126,7 @@ public abstract class BallAgent : Task, IComparable<BallAgent>, IBallAgent
         _resetParams = Academy.Instance.EnvironmentParameters;
         _supervisorAgent = gameObject.transform.root.GetComponent<Supervisor.SupervisorAgent>();
 
-        BallStateInformation.PlatformRadius = GetScale() / 2f;
+        Ball3DAgentStateInformation.PlatformRadius = GetScale() / 2f;
 
         SetResetParameters();
     }
@@ -346,7 +346,7 @@ public abstract class BallAgent : Task, IComparable<BallAgent>, IBallAgent
             Mathf.Abs(Ball.transform.localPosition.x - gameObject.transform.localPosition.x) > radius ||
             Mathf.Abs(Ball.transform.localPosition.z - gameObject.transform.localPosition.z) > radius)
         {
-            Debug.Log("Ball is outside of the allowed area: episode ended...");
+            Debug.Log("_ball is outside of the allowed area: episode ended...");
 
             return true;
         }

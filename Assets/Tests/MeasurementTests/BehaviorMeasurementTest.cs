@@ -25,7 +25,7 @@ public class BehaviorMeasurementTest
     private BehaviorMeasurement _behaviourMeasurement;
     private readonly string _fileNameForBehavioralData = "testBehavioralData.json";
     private readonly string _comparisonFileName = Path.Combine("..", "..", "Assets", "Tests", "MeasurementTests", "testComparison.json");
-    private BallStateInformation[] _ballStateInformation;
+    private Ball3DAgentStateInformation[] _ballStateInformation;
     private SupervisorSettings _supervisorSettings;
     private Hyperparameters _hyperparameters;
     Dictionary<string, int> _measurementSettings;
@@ -64,11 +64,11 @@ public class BehaviorMeasurementTest
             tasks = new string[] { "Ball3DAgentHumanCognition", "Ball3DAgentHumanCognition" },
         };
 
-        _ballStateInformation = new BallStateInformation[2];
+        _ballStateInformation = new Ball3DAgentStateInformation[2];
 
-        _ballStateInformation[0] = new BallStateInformation();
-        _ballStateInformation[1] = new BallStateInformation();
-        BallStateInformation measurementSettings = new BallStateInformation();
+        _ballStateInformation[0] = new Ball3DAgentStateInformation();
+        _ballStateInformation[1] = new Ball3DAgentStateInformation();
+        Ball3DAgentStateInformation measurementSettings = new Ball3DAgentStateInformation();
 
         measurementSettings.NumberOfActionBinsPerAxis = _ballStateInformation[0].NumberOfActionBinsPerAxis = _ballStateInformation[1].NumberOfActionBinsPerAxis = 5;
         measurementSettings.NumberOfDistanceBins_angle = _ballStateInformation[0].NumberOfDistanceBins_angle = _ballStateInformation[1].NumberOfDistanceBins_angle = 5;
@@ -78,12 +78,12 @@ public class BehaviorMeasurementTest
         measurementSettings.NumberOfAreaBinsPerDirection = _ballStateInformation[0].NumberOfAreaBinsPerDirection = _ballStateInformation[1].NumberOfAreaBinsPerDirection = 15;
         measurementSettings.NumberOfBallVelocityBinsPerAxis = _ballStateInformation[0].NumberOfBallVelocityBinsPerAxis = _ballStateInformation[1].NumberOfBallVelocityBinsPerAxis = 6;
 
-        MeasurementSettings.Data[typeof(BallStateInformation)] = measurementSettings;
+        MeasurementSettings.Data[typeof(Ball3DAgentStateInformation)] = measurementSettings;
 
         ((ITask)_ballAgentsMock[0]).StateInformation.Returns(_ballStateInformation[0]);
         ((ITask)_ballAgentsMock[1]).StateInformation.Returns(_ballStateInformation[1]);
 
-        BallStateInformation.PlatformRadius = 5;
+        Ball3DAgentStateInformation.PlatformRadius = 5;
 
         _behaviourMeasurement = new BehaviorMeasurement(
             supervisorAgent: _supervisorAgentMock,
@@ -94,16 +94,16 @@ public class BehaviorMeasurementTest
             hyperparameters: _hyperparameters
         );
 
-        _velocityRangeVector = new Vector3(BallStateInformation.VelocityRangeMax.x - BallStateInformation.VelocityRangeMin.x,
-                                           BallStateInformation.VelocityRangeMax.y - BallStateInformation.VelocityRangeMin.y,
-                                           BallStateInformation.VelocityRangeMax.z - BallStateInformation.VelocityRangeMin.z);
+        _velocityRangeVector = new Vector3(Ball3DAgentStateInformation.VelocityRangeMax.x - Ball3DAgentStateInformation.VelocityRangeMin.x,
+                                           Ball3DAgentStateInformation.VelocityRangeMax.y - Ball3DAgentStateInformation.VelocityRangeMin.y,
+                                           Ball3DAgentStateInformation.VelocityRangeMax.z - Ball3DAgentStateInformation.VelocityRangeMin.z);
 
-        _angleRangeVector = new Vector3(BallStateInformation.AngleRangeMax.x - BallStateInformation.AngleRangeMin.x,
-                                        BallStateInformation.AngleRangeMax.y - BallStateInformation.AngleRangeMin.y,
-                                        BallStateInformation.AngleRangeMax.z - BallStateInformation.AngleRangeMin.z);   
+        _angleRangeVector = new Vector3(Ball3DAgentStateInformation.AngleRangeMax.x - Ball3DAgentStateInformation.AngleRangeMin.x,
+                                        Ball3DAgentStateInformation.AngleRangeMax.y - Ball3DAgentStateInformation.AngleRangeMin.y,
+                                        Ball3DAgentStateInformation.AngleRangeMax.z - Ball3DAgentStateInformation.AngleRangeMin.z);   
 
         string behaviorPath = Util.GetBehavioralDataPath(_fileNameForBehavioralData, _supervisorSettings, _hyperparameters, "BSI", _ballStateInformation[0].BehaviorDimensions);
-        string reactionTimePath = Util.GetReactionTimeDataPath(_fileNameForBehavioralData, _supervisorSettings, _hyperparameters, MeasurementUtil.GetMeasurementName(typeof(BallStateInformation), typeof(BallStateInformation)), _ballStateInformation[0].GetRelationalDimensions(typeof(BallStateInformation)));
+        string reactionTimePath = Util.GetReactionTimeDataPath(_fileNameForBehavioralData, _supervisorSettings, _hyperparameters, MeasurementUtil.GetMeasurementName(typeof(Ball3DAgentStateInformation), typeof(Ball3DAgentStateInformation)), _ballStateInformation[0].GetRelationalDimensions(typeof(Ball3DAgentStateInformation)));
 
         try
         {
@@ -126,7 +126,7 @@ public class BehaviorMeasurementTest
     [Test]
     public void ResponseTimeMeasurementTest()
     {
-        string path = Util.GetReactionTimeDataPath(_fileNameForBehavioralData, _supervisorSettings, _hyperparameters, MeasurementUtil.GetMeasurementName(typeof(BallStateInformation), typeof(BallStateInformation)), _ballStateInformation[0].GetRelationalDimensions(typeof(BallStateInformation)));
+        string path = Util.GetReactionTimeDataPath(_fileNameForBehavioralData, _supervisorSettings, _hyperparameters, MeasurementUtil.GetMeasurementName(typeof(Ball3DAgentStateInformation), typeof(Ball3DAgentStateInformation)), _ballStateInformation[0].GetRelationalDimensions(typeof(Ball3DAgentStateInformation)));
 
         _ballAgentsMock[0].GetBallLocalPosition().Returns(new Vector3(0, 0, 0));
         _ballStateInformation[0].BallPositionX = _ballAgentsMock[0].GetBallLocalPosition().x;
@@ -149,7 +149,7 @@ public class BehaviorMeasurementTest
         _ballStateInformation[1].BallVelocityY = _ballAgentsMock[1].GetBallVelocity().y;
         _ballStateInformation[1].BallVelocityZ = _ballAgentsMock[1].GetBallVelocity().z;
         int velocityBin = PositionConverter.ContinuousValueToBin(Vector3.Distance(_ballAgentsMock[0].GetBallVelocity(), _ballAgentsMock[1].GetBallVelocity()),
-                                                          Vector3.Distance(BallStateInformation.VelocityRangeMax, BallStateInformation.VelocityRangeMin),
+                                                          Vector3.Distance(Ball3DAgentStateInformation.VelocityRangeMax, Ball3DAgentStateInformation.VelocityRangeMin),
                                                           _ballStateInformation[0].NumberOfDistanceBins_velocity);
         _ballAgentsMock[0].GetPlatformAngle().Returns(new Vector3(20, 5, 10));
         _ballStateInformation[0].PlatformAngleX = _ballAgentsMock[0].GetPlatformAngle().x;
@@ -247,7 +247,7 @@ public class BehaviorMeasurementTest
         hyperparameters: _hyperparameters
         );
 
-        string path = Util.GetReactionTimeDataPath(_fileNameForBehavioralData, _supervisorSettings, _hyperparameters, MeasurementUtil.GetMeasurementName(typeof(BallStateInformation), typeof(BallStateInformation)), _ballStateInformation[0].GetRelationalDimensions(typeof(BallStateInformation), _behaviourMeasurement.NumberOfTimeBins));
+        string path = Util.GetReactionTimeDataPath(_fileNameForBehavioralData, _supervisorSettings, _hyperparameters, MeasurementUtil.GetMeasurementName(typeof(Ball3DAgentStateInformation), typeof(Ball3DAgentStateInformation)), _ballStateInformation[0].GetRelationalDimensions(typeof(Ball3DAgentStateInformation), _behaviourMeasurement.NumberOfTimeBins));
 
         _ballAgentsMock[0].GetBallLocalPosition().Returns(new Vector3(0, 0, 0));
         _ballStateInformation[0].BallPositionX = _ballAgentsMock[0].GetBallLocalPosition().x;
@@ -270,7 +270,7 @@ public class BehaviorMeasurementTest
         _ballStateInformation[1].BallVelocityY = _ballAgentsMock[1].GetBallVelocity().y;
         _ballStateInformation[1].BallVelocityZ = _ballAgentsMock[1].GetBallVelocity().z;
         int velocityBin = PositionConverter.ContinuousValueToBin(Vector3.Distance(_ballAgentsMock[0].GetBallVelocity(), _ballAgentsMock[1].GetBallVelocity()),
-                                                          Vector3.Distance(BallStateInformation.VelocityRangeMax, BallStateInformation.VelocityRangeMin),
+                                                          Vector3.Distance(Ball3DAgentStateInformation.VelocityRangeMax, Ball3DAgentStateInformation.VelocityRangeMin),
                                                           _ballStateInformation[0].NumberOfDistanceBins_velocity);
         _ballAgentsMock[0].GetPlatformAngle().Returns(new Vector3(20, 5, 10));
         _ballStateInformation[0].PlatformAngleX = _ballAgentsMock[0].GetPlatformAngle().x;
@@ -281,7 +281,7 @@ public class BehaviorMeasurementTest
         _ballStateInformation[1].PlatformAngleY = _ballAgentsMock[1].GetPlatformAngle().y;
         _ballStateInformation[1].PlatformAngleZ = _ballAgentsMock[1].GetPlatformAngle().z;
         int angleDistanceBin = PositionConverter.ContinuousValueToBin(Vector3.Distance(_ballAgentsMock[0].GetPlatformAngle(), _ballAgentsMock[1].GetPlatformAngle()),
-                                                                      Vector3.Distance(BallStateInformation.AngleRangeMin, BallStateInformation.AngleRangeMax),
+                                                                      Vector3.Distance(Ball3DAgentStateInformation.AngleRangeMin, Ball3DAgentStateInformation.AngleRangeMax),
                                                                       _ballStateInformation[0].NumberOfDistanceBins_angle);
 
         Assert.IsTrue(angleDistanceBin != 0);
@@ -344,7 +344,7 @@ public class BehaviorMeasurementTest
     [Test]
     public void SuspendedCountMeasurementTest()
     {
-        string path = Util.GetReactionTimeDataPath(_fileNameForBehavioralData, _supervisorSettings, _hyperparameters, MeasurementUtil.GetMeasurementName(typeof(BallStateInformation), typeof(BallStateInformation)), _ballStateInformation[0].GetRelationalDimensions(typeof(BallStateInformation)));
+        string path = Util.GetReactionTimeDataPath(_fileNameForBehavioralData, _supervisorSettings, _hyperparameters, MeasurementUtil.GetMeasurementName(typeof(Ball3DAgentStateInformation), typeof(Ball3DAgentStateInformation)), _ballStateInformation[0].GetRelationalDimensions(typeof(Ball3DAgentStateInformation)));
 
         _ballAgentsMock[0].GetBallLocalPosition().Returns(new Vector3(0, 0, 0));
         _ballStateInformation[0].BallPositionX = _ballAgentsMock[0].GetBallLocalPosition().x;
@@ -367,7 +367,7 @@ public class BehaviorMeasurementTest
         _ballStateInformation[1].BallVelocityY = _ballAgentsMock[1].GetBallVelocity().y;
         _ballStateInformation[1].BallVelocityZ = _ballAgentsMock[1].GetBallVelocity().z;
         int velocityBin = PositionConverter.ContinuousValueToBin(Vector3.Distance(_ballAgentsMock[0].GetBallVelocity(), _ballAgentsMock[1].GetBallVelocity()),
-                                                          Vector3.Distance(BallStateInformation.VelocityRangeMax, BallStateInformation.VelocityRangeMin),
+                                                          Vector3.Distance(Ball3DAgentStateInformation.VelocityRangeMax, Ball3DAgentStateInformation.VelocityRangeMin),
                                                           _ballStateInformation[0].NumberOfDistanceBins_velocity);
         _ballAgentsMock[0].GetPlatformAngle().Returns(new Vector3(20, 5, 10));
         _ballStateInformation[0].PlatformAngleX = _ballAgentsMock[0].GetPlatformAngle().x;
@@ -478,13 +478,13 @@ public class BehaviorMeasurementTest
         _ballStateInformation[0].BallVelocityX = _ballAgentsMock[0].GetBallVelocity().x;
         _ballStateInformation[0].BallVelocityY = _ballAgentsMock[0].GetBallVelocity().y;
         _ballStateInformation[0].BallVelocityZ = _ballAgentsMock[0].GetBallVelocity().z; 
-        int velocityBin = PositionConverter.RangeVectorToBin(_ballAgentsMock[0].GetBallVelocity(), _velocityRangeVector, _ballStateInformation[0].NumberOfBallVelocityBinsPerAxis, BallStateInformation.VelocityRangeMin);
+        int velocityBin = PositionConverter.RangeVectorToBin(_ballAgentsMock[0].GetBallVelocity(), _velocityRangeVector, _ballStateInformation[0].NumberOfBallVelocityBinsPerAxis, Ball3DAgentStateInformation.VelocityRangeMin);
         
         _ballAgentsMock[0].GetPlatformAngle().Returns(new Vector3(20, 5, 10));
         _ballStateInformation[0].PlatformAngleX = _ballAgentsMock[0].GetPlatformAngle().x;
         _ballStateInformation[0].PlatformAngleY = _ballAgentsMock[0].GetPlatformAngle().y;
         _ballStateInformation[0].PlatformAngleZ = _ballAgentsMock[0].GetPlatformAngle().z;
-        int rangeBin = PositionConverter.RangeVectorToBin(_ballAgentsMock[0].GetPlatformAngle(), _angleRangeVector, _ballStateInformation[0].NumberOfAngleBinsPerAxis, BallStateInformation.AngleRangeMin);
+        int rangeBin = PositionConverter.RangeVectorToBin(_ballAgentsMock[0].GetPlatformAngle(), _angleRangeVector, _ballStateInformation[0].NumberOfAngleBinsPerAxis, Ball3DAgentStateInformation.AngleRangeMin);
 
         List<dynamic> actions = new List<dynamic> { new Vector3(1f, 0, 1f) };
         _behaviourMeasurement.CollectData(actions, (ITask)_ballAgentsMock[0]);
@@ -518,13 +518,13 @@ public class BehaviorMeasurementTest
         _ballStateInformation[0].BallVelocityX = _ballAgentsMock[0].GetBallVelocity().x;
         _ballStateInformation[0].BallVelocityY = _ballAgentsMock[0].GetBallVelocity().y;
         _ballStateInformation[0].BallVelocityZ = _ballAgentsMock[0].GetBallVelocity().z;
-        velocityBin = PositionConverter.RangeVectorToBin(_ballAgentsMock[0].GetBallVelocity(), _velocityRangeVector, _ballStateInformation[0].NumberOfBallVelocityBinsPerAxis, BallStateInformation.VelocityRangeMin);
+        velocityBin = PositionConverter.RangeVectorToBin(_ballAgentsMock[0].GetBallVelocity(), _velocityRangeVector, _ballStateInformation[0].NumberOfBallVelocityBinsPerAxis, Ball3DAgentStateInformation.VelocityRangeMin);
         
         _ballAgentsMock[0].GetPlatformAngle().Returns(new Vector3(200, 50, 100));
         _ballStateInformation[0].PlatformAngleX = _ballAgentsMock[0].GetPlatformAngle().x;
         _ballStateInformation[0].PlatformAngleY = _ballAgentsMock[0].GetPlatformAngle().y;
         _ballStateInformation[0].PlatformAngleZ = _ballAgentsMock[0].GetPlatformAngle().z;
-        rangeBin = PositionConverter.RangeVectorToBin(_ballAgentsMock[0].GetPlatformAngle(), _angleRangeVector, _ballStateInformation[0].NumberOfAngleBinsPerAxis, BallStateInformation.AngleRangeMin);
+        rangeBin = PositionConverter.RangeVectorToBin(_ballAgentsMock[0].GetPlatformAngle(), _angleRangeVector, _ballStateInformation[0].NumberOfAngleBinsPerAxis, Ball3DAgentStateInformation.AngleRangeMin);
 
         actions = new List<dynamic> { new Vector3(2f, 0, 2f) };
         _behaviourMeasurement.CollectData(actions, (ITask)_ballAgentsMock[0]);
@@ -552,13 +552,13 @@ public class BehaviorMeasurementTest
         _ballStateInformation[0].BallVelocityX = _ballAgentsMock[0].GetBallVelocity().x;
         _ballStateInformation[0].BallVelocityY = _ballAgentsMock[0].GetBallVelocity().y;
         _ballStateInformation[0].BallVelocityZ = _ballAgentsMock[0].GetBallVelocity().z;
-        int velocityBin = PositionConverter.RangeVectorToBin(_ballAgentsMock[0].GetBallVelocity(), _velocityRangeVector, _ballStateInformation[0].NumberOfBallVelocityBinsPerAxis, BallStateInformation.VelocityRangeMin);
+        int velocityBin = PositionConverter.RangeVectorToBin(_ballAgentsMock[0].GetBallVelocity(), _velocityRangeVector, _ballStateInformation[0].NumberOfBallVelocityBinsPerAxis, Ball3DAgentStateInformation.VelocityRangeMin);
         
         _ballAgentsMock[0].GetPlatformAngle().Returns(new Vector3(20, 5, 10));
         _ballStateInformation[0].PlatformAngleX = _ballAgentsMock[0].GetPlatformAngle().x;
         _ballStateInformation[0].PlatformAngleY = _ballAgentsMock[0].GetPlatformAngle().y;
         _ballStateInformation[0].PlatformAngleZ = _ballAgentsMock[0].GetPlatformAngle().z;
-        int rangeBin = PositionConverter.RangeVectorToBin(_ballAgentsMock[0].GetPlatformAngle(), _angleRangeVector, _ballStateInformation[0].NumberOfAngleBinsPerAxis, BallStateInformation.AngleRangeMin);
+        int rangeBin = PositionConverter.RangeVectorToBin(_ballAgentsMock[0].GetPlatformAngle(), _angleRangeVector, _ballStateInformation[0].NumberOfAngleBinsPerAxis, Ball3DAgentStateInformation.AngleRangeMin);
 
         List<dynamic> actions = new List<dynamic> { new Vector3(1.005f, 0, 1.025f) };
         _behaviourMeasurement.CollectData(actions, (ITask)_ballAgentsMock[0]);
@@ -631,7 +631,7 @@ public class BehaviorMeasurementTest
         string fileNameForBehavioralData = Path.Combine("..", "..", "Assets", "Tests", "MeasurementTests", "testUpdateExistingTemp_b.json");
 
         string behaviorPath = Util.GetBehavioralDataPath(fileNameForBehavioralData, _supervisorSettings, _hyperparameters, "BSI", _ballStateInformation[0].BehaviorDimensions);
-        string reactionTimePath = Util.GetReactionTimeDataPath(fileNameForBehavioralData, _supervisorSettings, _hyperparameters, MeasurementUtil.GetMeasurementName(typeof(BallStateInformation), typeof(BallStateInformation)), _ballStateInformation[0].GetRelationalDimensions(typeof(BallStateInformation)));
+        string reactionTimePath = Util.GetReactionTimeDataPath(fileNameForBehavioralData, _supervisorSettings, _hyperparameters, MeasurementUtil.GetMeasurementName(typeof(Ball3DAgentStateInformation), typeof(Ball3DAgentStateInformation)), _ballStateInformation[0].GetRelationalDimensions(typeof(Ball3DAgentStateInformation)));
 
         File.Delete(behaviorPath);
         File.Delete(reactionTimePath);
@@ -687,12 +687,12 @@ public class BehaviorMeasurementTest
         _ballStateInformation[0].PlatformAngleX = _ballAgentsMock[0].GetPlatformAngle().x;
         _ballStateInformation[0].PlatformAngleY = _ballAgentsMock[0].GetPlatformAngle().y;
         _ballStateInformation[0].PlatformAngleZ = _ballAgentsMock[0].GetPlatformAngle().z;
-        int newAngleBin = PositionConverter.RangeVectorToBin(_ballAgentsMock[0].GetPlatformAngle(), _angleRangeVector, _ballStateInformation[0].NumberOfAngleBinsPerAxis, BallStateInformation.AngleRangeMin);
+        int newAngleBin = PositionConverter.RangeVectorToBin(_ballAgentsMock[0].GetPlatformAngle(), _angleRangeVector, _ballStateInformation[0].NumberOfAngleBinsPerAxis, Ball3DAgentStateInformation.AngleRangeMin);
         _ballAgentsMock[0].GetBallVelocity().Returns(new Vector3(3.5f, 0, -3.5f));
         _ballStateInformation[0].BallVelocityX = _ballAgentsMock[0].GetBallVelocity().x;
         _ballStateInformation[0].BallVelocityY = _ballAgentsMock[0].GetBallVelocity().y;
         _ballStateInformation[0].BallVelocityZ = _ballAgentsMock[0].GetBallVelocity().z;
-        int newVelocityBin = PositionConverter.RangeVectorToBin(_ballAgentsMock[0].GetBallVelocity(), _velocityRangeVector, _ballStateInformation[0].NumberOfBallVelocityBinsPerAxis, BallStateInformation.VelocityRangeMin);
+        int newVelocityBin = PositionConverter.RangeVectorToBin(_ballAgentsMock[0].GetBallVelocity(), _velocityRangeVector, _ballStateInformation[0].NumberOfBallVelocityBinsPerAxis, Ball3DAgentStateInformation.VelocityRangeMin);
         List<dynamic> actions = new List<dynamic> { new Vector2(0.025f, 0.025f) };
 
         _behaviourMeasurement.CollectData(actions, (ITask)_ballAgentsMock[0]);

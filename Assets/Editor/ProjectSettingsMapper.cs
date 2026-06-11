@@ -124,7 +124,7 @@ public static class ProjectSettingsMapper
         balancingTaskBehaviourMeasurement.IsRawDataCollected = behavioralDataCollectionSettings.isRawDataCollected != null ? behavioralDataCollectionSettings.isRawDataCollected.GetValueOrDefault() : balancingTaskBehaviourMeasurement.IsRawDataCollected;
         balancingTaskBehaviourMeasurement.MaxNumberOfActions = behavioralDataCollectionSettings.maxNumberOfActions != null ? behavioralDataCollectionSettings.maxNumberOfActions.GetValueOrDefault() : balancingTaskBehaviourMeasurement.MaxNumberOfActions;
 
-        BallStateInformation ballStateInformation = (BallStateInformation)MeasurementSettings.Data[typeof(BallStateInformation)];
+        Ball3DAgentStateInformation ballStateInformation = (Ball3DAgentStateInformation)MeasurementSettings.Data[typeof(Ball3DAgentStateInformation)];
 
         ballStateInformation.NumberOfAreaBinsPerDirection = behavioralDataCollectionSettings.numberOfAreaBins_BehavioralData == null ? ballStateInformation.NumberOfAreaBinsPerDirection : Math.Sqrt(behavioralDataCollectionSettings.numberOfAreaBins_BehavioralData.GetValueOrDefault()) % 1 == 0 ? ((int)Math.Sqrt(behavioralDataCollectionSettings.numberOfAreaBins_BehavioralData.GetValueOrDefault())) : ((int)Math.Sqrt(behavioralDataCollectionSettings.numberOfAreaBins_BehavioralData.GetValueOrDefault())) + 1;
         ballStateInformation.NumberOfBallVelocityBinsPerAxis = behavioralDataCollectionSettings.numberOfBallVelocityBinsPerAxis_BehavioralData != null ? behavioralDataCollectionSettings.numberOfBallVelocityBinsPerAxis_BehavioralData.GetValueOrDefault() : ballStateInformation.NumberOfBallVelocityBinsPerAxis;
