@@ -177,6 +177,9 @@ Assets/Models/*
 !Assets/Models/AUI.asset.meta
 !Assets/Models/AUI.onnx
 !Assets/Models/AUI.onnx.meta
+!Assets/Models/BallAgent2D/
+!Assets/Models/BallAgent2D/**
+!Assets/Models/BallAgent2D.meta
 
 # model log files
 run_logs/
