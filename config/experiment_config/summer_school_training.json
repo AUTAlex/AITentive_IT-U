@@ -1,7 +1,4 @@
 {
-	"ExperimentSettings": {
-		"gamemode": true
-	},
 	"hyperparameters": {
 		"version": 2,
 		"autonomous": true,
@@ -13,6 +10,7 @@
 		"hideInactiveTasks": false,
 		"useFocusAgent": false,
 		"useAttentionTimer": false,
+		"useVisibilityTimer": true,
 		"visualTaskQueueChoice": "None",
 		"visionAgentChoice": "PixelVisionAgent",
 		"useVisionAgentPerTask": true,
@@ -30,7 +28,7 @@
 	"drivingAgentHumanCognitionSummerSchool": {
 		"isAutonomous": true,
 		"maxCarSpeed": 150,
-		"useFocusAgent": true,
+		"useFocusAgent": false,
 		"fullVision": false,
 		"showBeliefState": false,
 		"isTerminatingTask": false,
@@ -49,7 +47,8 @@
 		}
 	},
 	"supervisorAgent": {
-		"rewardFunction": "r_0"
+		"rewardFunction": "r_0",
+		"TimeScale": 20
 	},
 	"GameManager": {
 		"ActiveScenarioSettings": "Scenario_CR_Summer_School",
@@ -71,9 +70,16 @@
 		}
 	},
 	"VisibilityMenuButton": {
-		"UseVisibilityButton": true
+		"UseVisibilityButton": false
 	},
 	"BeliefStateVisualizer": {
-		"ShowBeliefState": true
+		"ShowBeliefState": false
+	},
+	"VisibilityTimer": {
+		"UseRandomTimes": true,
+		"OnScreenDurationsMin": 5,
+		"OnScreenDurationsMax": 15,
+		"OffScreenDurationsMin": 2,
+		"OffScreenDurationsMax": 5
 	}
 }
