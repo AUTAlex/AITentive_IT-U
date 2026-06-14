@@ -180,6 +180,9 @@ Assets/Models/*
 !Assets/Models/BallAgent2D/
 !Assets/Models/BallAgent2D/**
 !Assets/Models/BallAgent2D.meta
+!Assets/Models/SummerSchool/
+!Assets/Models/SummerSchool/**
+!Assets/Models/SummerSchool.meta
 
 # model log files
 run_logs/
